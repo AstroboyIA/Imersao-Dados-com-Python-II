@@ -175,7 +175,7 @@ with col_graf4:
             medalhas_pais,
             locations="pais_iso3",
             color="total_medalhas",
-            color_continuous_scale="ylorrd",
+            color_continuous_scale="rdylgn",
             title="Total de medalhas por país",
             labels={"total_medalhas": "Total de medalhas", "pais_iso3": "País"},
         )
