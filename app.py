@@ -8,7 +8,7 @@ st.set_page_config(
     layout="wide",
 )
 
-df = pd.read_csv("medals_final_modified.csv")
+df = pd.read_csv("data/medals_final_modified.csv")
 
 df.columns = df.columns.str.strip().str.lower()
 
