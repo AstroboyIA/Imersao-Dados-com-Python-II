@@ -85,17 +85,21 @@ if not df_filtrado.empty:
     total_paises = df_filtrado["pais"].nunique()
     esporte_mais_premiado = df_filtrado["esporte"].mode()[0]
     pais_mais_premiado = df_filtrado["pais"].mode()[0]
+    atleta_mais_premiado = df_filtrado["atleta"].mode()[0]
 else:
     total_medalhas = 0
     total_paises = 0
     esporte_mais_premiado = "—"
     pais_mais_premiado = "—"
+    atleta_mais_premiado = "—"
 
-col1, col2, col3, col4 = st.columns(4)
+
+col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("Total de medalhas", f"{total_medalhas:,}")
 col2.metric("Países distintos", f"{total_paises:,}")
 col3.metric("Esporte mais premiado", esporte_mais_premiado)
 col4.metric("País mais premiado", pais_mais_premiado)
+col5.metric("Atleta mais premiado", atleta_mais_premiado)
 
 st.markdown("---")
 
