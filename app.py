@@ -185,6 +185,33 @@ with col_graf4:
     else:
         st.warning("Nenhum dado para exibir no mapa de medalhas.")
 
+col_graf5 = st.columns(1)
+
+with col_graf5:
+    if not df_filtrado.empty:
+        top_atletas = (
+            df_filtrado.groupby("atleta")
+            .size()
+            .nlargest(10)
+            .sort_values(ascending=True)
+            .reset_index(name="total_medalhas")
+        )
+
+        grafico_atletas = px.bar(
+            top_atletas,
+            x="total_medalhas",
+            y="atleta",
+            orientation="h",
+            title="Top 10 Atletas com mais medalhas",
+            labels={"total_medalhas": "Total de medalhas", "atleta": "Atleta"},
+            color="total_medalhas",
+            color_continuous_scale="Viridis",
+        )
+
+        grafico_atletas.update_layout(title_x=0.1, showlegend=False)
+        st.plotly_chart(grafico_atletas, use_container_width=True)
+    else:
+        st.warning("Nenhum dado para exibir no gráfico de atletas.")
 st.subheader("Dados Detalhados")
 st.dataframe(df_filtrado)
 
